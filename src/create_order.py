@@ -10,7 +10,7 @@ def create_order():
         "locale": "en-US",
         "payment": {
             "method": "ethereum-sepolia",
-            "currency": "eth",
+            "currency": "usdc",
             "payerAddress": os.environ.get("PAYER_ADDRESS")
         },
         "lineItems": {
