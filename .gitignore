@@ -26,9 +26,6 @@ venv/
 env/
 ENV/
 
-# Environment Variables
-.env
-
 # IDE
 .idea/
 .vscode/
