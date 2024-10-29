@@ -2,6 +2,7 @@ from create_order import create_order
 from get_order import poll_order
 from utils import validate
 from dotenv import load_dotenv
+from rich import print
 import json
 import os
 import sys
@@ -20,14 +21,14 @@ try:
     result = create_order()
     client_secret, order = result['clientSecret'], result['order']
     print(client_secret, order)
-    validate(order['phase'] == "payment", f'Order is in phase "{order["phase"]}". Expected "payment".')
+    validate(order['phase'] == "payment", f'Order is in phase [bold red]"{order["phase"]}"[/bold red]. Expected "payment".')
 
     payment = order['payment']
     validate(payment['status'] == "awaiting-payment", 
             f'Payment is in status "{payment["status"]}". Expected "awaiting-payment".')
     serialized_transaction = payment['preparation']['serializedTransaction']
 
-    print(f'Copy and paste this string to the next step of the quickstart: {serialized_transaction}')
+    print(f'Copy and paste this string to the next step of the quickstart: [bold blue]{serialized_transaction}[/bold blue]')
 
     completed_order = poll_order(order['orderId'], client_secret)
     print("Here is the final order details")
