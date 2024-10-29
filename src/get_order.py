@@ -1,5 +1,6 @@
 from typing import Dict, Any
 from utils import base_url, validate
+from rich import print
 import os
 import requests
 import time
@@ -24,7 +25,7 @@ def poll_order(order_id: str, client_secret: str) -> Dict[str, Any]:
     while True:
         try:
             order = get_order(order_id, client_secret)
-            print('Current order status:', order['phase'])
+            print(f'Current order status: [bold yellow]{order["phase"]}[/bold yellow]')
 
             if order['phase'] == 'completed':
                 return order
