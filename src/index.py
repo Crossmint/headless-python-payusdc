@@ -3,7 +3,6 @@ from get_order import poll_order
 from utils import validate
 from dotenv import load_dotenv
 from rich import print as rprint
-from rich.text import Text
 import json
 import os
 import sys
